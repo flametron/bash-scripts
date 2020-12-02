@@ -1,0 +1,34 @@
+#!/bin/bash
+clear
+mid_x=$((`tput lines`/2))
+mid_y=$((`tput cols`/2))
+rows=$1
+x=$(( $mid_x - ($rows /2 )))
+y=$mid_y
+if [ $rows -ge $((`tput lines`)) ]
+then
+    echo "Cannot Run, not enough lines!"
+    exit 1
+fi
+for((i=0;i<$rows;i++))
+do  
+    space=$(( 2 * $i))
+    tput cup $x 0
+    tput cup $x $y
+    echo "*"
+    tput cup $x $(( $y + $space)) 
+    echo "*"
+    # echo $x $y - $space
+    if [ $i -eq $(( $rows - 1 )) ]
+    then
+        for((j = 0; j<= space + 1 ; j=j+2))
+        do  
+            tput cup $x $(( $y + j ))
+            echo "*"
+        done
+    fi
+    x=$(($x + 1))
+    y=$(($y - 1))
+done
+
+tput cup 0 0

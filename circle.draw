@@ -1,0 +1,21 @@
+#!/bin/bash
+clear
+# NEED IMPROVEMENT: FIX THE ASPECT RATIO
+mid_x=$((`tput lines`/2))
+mid_y=$((`tput cols`/2))
+ratio=`echo "scale=3; $mid_x/$mid_y" | bc`
+ratio=`echo "scale=3; $ratio + 1" | bc`
+echo $ratio
+radius=$1
+for((i=0;i<=360;i=i+10))
+do
+    A=`echo "scale=3; 3.14/180 * $i" | bc | awk '{print cos($1)}' `
+    X=`echo "scale=3; $radius * $A" | bc | awk '{print int($1)}'`
+    B=`echo "scale=3; 3.14/180 * $i" | bc | awk '{print sin($1)}' `
+    Y=`echo "scale=3; $radius * $B" | bc | awk '{print int($1)}'`
+    YChecked=`echo "scale=3; $ratio + ($Y + $mid_y)" | bc | awk '{print int($1)}'`
+    echo $YChecked
+    tput cup $(($X + $mid_x)) $(($Y + $mid_y))
+    echo "*"
+done
+tput cup 0 0

@@ -1,0 +1,54 @@
+#!/bin/bash
+clear
+fact(){
+    num=$1
+    fact=1
+    while [ $num -gt 1 ]
+    do
+        fact=$((fact * num))
+        num=$((num - 1))
+    done
+
+    echo -n $fact
+}
+
+ncr(){
+    n=$1
+    r=$2
+    a=`fact $n`
+    b=`fact $r`
+    c=$(($n - $r))
+    d=`fact $c`
+    t=$(($b * $d))
+    v=$(($a / $t))
+    echo -n $v
+}
+
+echo "Enter the number of rows: "
+read rows
+if [ $rows -gt `tput lines` ]
+then
+    echo "Rows cannot be more than terminal height"
+    exit 1
+fi
+clear
+x=$(((`tput lines`/2) - (rows/2)))
+y=$((`tput cols`/2))
+for((j=0;j<rows;j++))
+do
+    tput cup $x $y
+    for((i=0;i<=j;i++))
+    do
+        var=`ncr $j $i`
+        echo -n $var
+        t=$((6-${#var}))
+        for((k=0;k<$t;k++))
+        do
+            echo -n " "
+        done
+    done
+    x=$((x+1))
+    y=$((y-3))
+done
+
+tput cup 0 0
