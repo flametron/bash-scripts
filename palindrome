@@ -1,34 +1,12 @@
 #!/bin/bash
 
-reverse(){
-    # Function not used anymore, got replaced by faster algorithm
 
-    # Accepts a string as input
-    # Returns the reverse of the input string
-
-    input=$1
-    len=${#input}
-    for (( i=$len-1; i>=0; i-- ))
-    do 
-        reverse="$reverse${input:$i:1}"
-    done
-    
-    echo $reverse
-}
 
 isPalind(){
     # Accepts a string as input
     # Returns 0 if the input string is a palindrome, 1 otherwise
 
     stringInput=$1
-   # returnedFromReverse=$(reverse $stringInput)
-   # if [ $returnedFromReverse != $stringInput ];
-   # then
-   #     return 1
-   # else
-   #     return 0     
-   # fi
-
     len=${#stringInput}
     for (( i=0; i<len/2; i++ ))
     do 
@@ -36,9 +14,7 @@ isPalind(){
             return 1
         fi
     done
-
     return 0
-    
 }
 
 feed(){
