@@ -1,6 +1,9 @@
 #!/bin/bash
 
 reverse(){
+    # Accepts a string as input
+    # Returns the reverse of the input string
+
     input=$1
     len=${#input}
     for (( i=$len-1; i>=0; i-- ))
@@ -12,6 +15,9 @@ reverse(){
 }
 
 isPalind(){
+    # Accepts a string as input
+    # Returns 0 if the input string is a palindrome
+
     stringInput=$1
     returnedFromReverse=$(reverse $stringInput)
     if [ $returnedFromReverse != $stringInput ];
@@ -23,6 +29,10 @@ isPalind(){
 }
 
 feed(){
+    # Accepts a file as input
+    # Returns nothing
+    # Sends each of the words to isPalind(), and if the word is a palindrome, it is added to the output file.
+
     file=$1
     if [ -f $file ]
     echo -e "=====\nFile: $file" >> output.palindrome
