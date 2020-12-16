@@ -1,6 +1,8 @@
 #!/bin/bash
 
-
+# Input to script format:
+# ./palindrome [list of files]
+# for example, ./palindrome input.palindrome newfile anotherfile morefiles
 
 isPalind(){
     # Accepts a string as input
