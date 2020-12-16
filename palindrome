@@ -54,6 +54,7 @@ feed(){
         exec<$file
         while read line; do
             for word in $line; do
+                # The two lines below filter out the . and ; characters
                 wd=${word//;}
                 wd2=${wd//.}
                 isPalind $wd2
