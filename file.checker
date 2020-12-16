@@ -1,0 +1,26 @@
+#!/bin/bash
+check(){
+    inp=$1
+    echo "===$inp==="
+    if [ -d $inp ]
+    then
+        echo "DIR"
+        echo `ls $inp`
+    fi
+
+    if [ -f $inp ]
+    then
+        echo "FILE"
+        cat $inp
+        set `wc $inp`
+        echo "Lines =  $1"
+        echo "Words = $2"
+        echo "Characters = $3"
+        chmod 741 $inp
+    fi
+}
+
+for item in $*
+do
+    check $item
+done

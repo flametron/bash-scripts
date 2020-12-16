@@ -1,0 +1,27 @@
+#!/bin/bash
+clear
+
+getGrade(){
+    case `expr $1 / 10` in
+        10|9 ) echo "O" ;;
+        8 ) echo "E" ;;
+        7 ) echo "A" ;;
+        6 ) echo "B" ;;
+        5 ) echo "C" ;;
+        4|3|2|1 ) echo "D" ;;
+        *) echo "None" ;;
+    esac
+}
+
+
+echo -e "Name\tRoll\tMark\tGrade" > grades
+file=$1
+if [ -f $file ]
+then
+    exec<$file
+    while read line
+    do
+        set `echo $line`
+        echo -e "$1\t$2\t\t$3\t\t`getGrade $3`" >> grades
+    done
+fi
