@@ -55,13 +55,13 @@ feed(){
         while read line; do
             for word in $line; do
                 # The two lines below filter out the . and ; characters
-                wd=${word//;}
-                wd2=${wd//.}
-                isPalind $wd2
+                word=${word//;}
+                word=${word//.}
+                isPalind $word
                 if [[ $? -eq 0 ]];
                 then
                     flag=1
-                    echo -e $wd2 >> output.palindrome
+                    echo -e $word >> output.palindrome
                 fi
             done
         done
