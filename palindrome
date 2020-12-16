@@ -16,7 +16,7 @@ reverse(){
 
 isPalind(){
     # Accepts a string as input
-    # Returns 0 if the input string is a palindrome
+    # Returns 0 if the input string is a palindrome, 1 otherwise
 
     stringInput=$1
     returnedFromReverse=$(reverse $stringInput)
