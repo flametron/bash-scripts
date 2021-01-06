@@ -1,0 +1,13 @@
+#!/bin/bash
+clear
+
+count=`ls -l | grep -v '^d'| wc -l`
+count=$((count-1))
+echo "File Count: $count" 
+
+max=`ls -l | grep -v '^d'| sort -n -r | head -n 2 | sed "1 d"`
+min=`ls -l | grep -v '^d'| sort -n | head -n 1`
+set `echo DD$max`
+echo -e "Max Sized File: $9 \t\tSize: $5"
+set `echo DD$min`
+echo -e "Min Sized File: $9 \t\tSize: $5"

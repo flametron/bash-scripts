@@ -1,0 +1,31 @@
+#!/bin/bash
+clear
+
+getWeather(){
+    div=$(($1-5))
+    case $((div/10)) in
+        0 ) echo "Very Cold" ;;
+        1 ) echo "Cold" ;;
+        2 ) echo "Hot" ;;
+        * ) echo "Very Hot" ;;
+    esac
+}
+
+feed(){
+    if [ -f $1 ]
+    echo -e "=====\nFile: $1\nDAY\t\t\tTEMP\tREMARK" >> weather.output
+    then
+        exec<$1
+        while read line; do 
+                set `echo $line`
+                echo -e "$1\t\t$2\t\t`getWeather $2`" >> weather.output
+        done
+    fi
+}
+
+echo "WEATHER REPORT" > weather.output
+
+for item in $*
+do
+    feed $item
+done

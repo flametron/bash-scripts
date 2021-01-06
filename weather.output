@@ -1,0 +1,10 @@
+WEATHER REPORT
+=====
+File: weather.input
+DAY			TEMP	REMARK
+SUNDAY		22		Cold
+MONDAY		32		Hot
+=====
+File: weather.input2
+DAY			TEMP	REMARK
+THURDAY		100		Very Hot

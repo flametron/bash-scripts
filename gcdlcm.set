@@ -1,0 +1,35 @@
+#!/bin/bash
+
+gcd() (
+    if (( $1 % $2 == 0)); then
+        echo $2
+     else
+        gcd $2 $(( $1 % $2 ))
+    fi
+)
+
+gcdWrapper(){
+    if [[ $# -eq 1 ]]; then
+        echo $1
+        exit 0
+    fi
+    if [[ $# -eq 2 ]]; then
+        echo `gcd $1 $2`
+        exit 0
+    fi
+}
+
+
+if [[ $# -eq 0 ]]; then
+    echo "Not enough numbers"
+    exit 0
+fi
+
+index=0
+for i in $*;
+do
+    a[index]=$i
+    index=$((index+1))
+done
+
+echo `gcdWrapper $1 $2`
