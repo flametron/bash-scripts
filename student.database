@@ -1,0 +1,61 @@
+#!/bin/bash
+#clear
+
+boot(){
+    FILE=$1
+    if [ ! -f $FILE ]; then
+        touch $FILE
+    fi
+
+    # TO IMPLEMENT: Add menu driven.
+}
+
+delete(){
+    ROLL=$1
+    FILE=$2
+    x=-1
+    l=`wc -l<$FILE`
+    for((i=2;i<=l;i++));
+    do
+        y=`head -n $i $FILE | tail -n 1 | cut -d \| -f 1`
+        if [ $ROLL -eq $y ]; then
+            x=$i
+        fi
+    done
+    xrem=$x'd'
+    if [ ! $x -eq -1 ]; then
+        sed -i $xrem $FILE
+    fi
+}
+
+insert(){
+    FILE=$1
+    echo "Enter number of entries: "
+    read n
+    touch temp
+    for((i=0;i<n;i++));
+    do
+        echo "Name:"
+        read name
+        echo "Roll:"
+        read roll
+        echo "Marks:"
+        read marks
+        echo $marks" "$name" "$roll >> temp
+    done
+    sort -n -o temp2 temp
+    exec<temp2
+    while read line
+    do
+        set `echo $line`
+        echo $3\|$2\|$1 >> database
+    done
+    rm temp
+    rm temp2
+}
+
+
+
+# TO IMPLEMENT: Update()
+
+boot $1

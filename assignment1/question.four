@@ -1,0 +1,23 @@
+#!/bin/bash
+
+n=$#
+i=0;
+for item in $*
+do
+    a[i]=$item
+    i=$((i+1))
+done
+for ((i=0;i<n;i++))
+do
+  for ((j=0;j<(n-i-1);j++))
+  do
+    if [ ${a[j+1]} -le ${a[j]} ]
+    then
+      t=${a[j]}
+      a[j]=${a[j+1]}
+      a[j+1]=$t
+    fi
+  done
+done
+echo "After sorting elements are:"
+echo ${a[*]}
