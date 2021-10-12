@@ -1,0 +1,5 @@
+Name				Roll No		Marks		Grade
+Swapnanil Dutta			12		70		A
+Swanmoy Nag			13		80		E
+Swagato Patra			14		69		B
+Suchetana Sheet			16		76		A
