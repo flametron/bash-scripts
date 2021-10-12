@@ -25,11 +25,3 @@ if [ -f $file ]; then
 fi
 echo
 cat student_result.txt
-
-#swapnanildutta@DESKTOP-IBUT3U8:~/Day 10$ bash student_grading.bash students
-#students accepted as input file.
-#Name                            Roll No         Marks           Grade
-#Swapnanil Dutta                 12              70              A
-#Swanmoy Nag                     13              80              E
-#Swagato Patra                   14              69              B
-#Suchetana Sheet                 16              76              A
